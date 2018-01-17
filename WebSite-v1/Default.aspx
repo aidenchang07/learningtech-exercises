@@ -8,6 +8,11 @@
     <title></title>
 </head>
 <body>
-    <img src="images/snowflake-2910087_640.png" />
+    <form id="form1" runat="server">
+        <asp:Label ID="dl_lab" Text="Download USPTO PatentNumber/6001234 之 HTML" runat="server"></asp:Label>
+        <br />
+        <asp:Button ID="dl_btn" Text="Click Here" runat="server" />
+    </form>
+    <!--顯示圖片<img src="images/snowflake-2910087_640.png" />-->
 </body>
 </html>
