@@ -9,10 +9,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Label ID="dl_lab" Text="Download USPTO PatentNumber/6001234 之 HTML" runat="server"></asp:Label>
+        <asp:Label  ID="dl_lab"
+                    Text="Download USPTO PatentNumber/6001234 之 HTML" runat="server"/>
         <br />
-        <asp:Button ID="dl_btn" Text="Click Here" runat="server" />
-    </form>
+        <asp:Button ID="dl_btn"
+                    Text="Click Here" runat="server"/>
+        <br />
+        <br />
+        <asp:Label  ID="pas_lab"
+                    Text="將 HTML Parse 成 XML" runat="server"/>
+        <br />
+        <asp:Button ID="pas_btn"
+                    Text="Click Here" runat="server"/>
+        <br />
+        <br />
+        <asp:Label ID="pas_text" Text="Nothing." runat="server"/>
     <!--顯示圖片<img src="images/snowflake-2910087_640.png" />-->
-</body>
+    </form>
+    </body>
 </html>
