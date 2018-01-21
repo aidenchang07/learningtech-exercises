@@ -59,31 +59,39 @@ public partial class _Default : System.Web.UI.Page
         xDoc = XDocument.Load(basePath + "res/06001234.xml");
         //使用 XDocument ---end---
 
-        //取得 PN 碼 ---str---
-        string patternPN = @"<TITLE>.*?</TITLE>";
+        //取得 PN ---str---
+        //string patternPN = @"<TITLE>.*?</TITLE>";
+        string patternPN = @"<BODY.*?>.*?United States Patent.*?</B>([\d\,]+)</b>.*?Abstract";
+
 
         Regex rulepattern = new Regex(patternPN, RegexOptions.Singleline);
-        MatchCollection matchRules = rulepattern.Matches(htmlString);
+        MatchCollection matches = rulepattern.Matches(htmlString);
         //Match matchRules = rulepattern.Match(htmlString);
         string result = null;
-        int i = 0;
-        foreach (Match m in matchRules)
-        {
-            string rule = Regex.Replace(m.ToString(), @"<TITLE>United States Patent: ", String.Empty);
-            rule = Regex.Replace(rule, @"</TITLE>", String.Empty);
 
+        foreach (Match match in matches)
+        {
+            //string rule = Regex.Replace(match.ToString(), @"\,", String.Empty);
+            //rule = Regex.Replace(rule, @"\,", String.Empty);
+            
+            //去掉逗號
+            string rule = Regex.Replace(match.Groups[1].Value.ToString(), @"\,", String.Empty);
+           
             result = rule;
+       
+            //pas_text.Text = match.Groups[1].Value;
 
         }
+        
+
         //pas_text.Text = result;
-        //取得 PN 碼 ---end---
-
-
-
-
-
         var node = xDoc.Root.Element("PN");
         node.SetValue(result);
+        //取得 PN ---end---
+
+        //取得 APN ---str---
+
+        //取得 APN ---end---
 
         //存檔 ---str---
         xDoc.Save(basePath + "res/06001234-test.xml");
