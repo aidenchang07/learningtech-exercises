@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PatentInfo>
+  <PN>6001234</PN>
+  <APN>940685</APN>
+  <APD>1997/09/30</APD>
+  <TTL>Methods for plating semiconductor workpieces using a workpiece-engaging electrode assembly with sealing boot</TTL>
+  <ISD>1999/12/14</ISD>
+  <EXA>Leader; William T.</EXA>
+  <EXP>Gorgos; Kathryn</EXP>
+  <INVTS>
+    <INVT>
+      <NAM>Batz, Jr.; Robert W.</NAM>
+      <CTY>Kalispell</CTY>
+      <STA>MT</STA>
+      <CNT />
+    </INVT>
+    <INVT>
+      <NAM>Berner; Robert W.</NAM>
+      <CTY>Kalispell</CTY>
+      <STA>MT</STA>
+      <CNT />
+    </INVT>
+    <INVT>
+      <NAM>Geyer; Harry J.</NAM>
+      <CTY>Kalispell</CTY>
+      <STA>MT</STA>
+      <CNT />
+    </INVT>
+    <INVT>
+      <NAM>Haugan; Kenneth C.</NAM>
+      <CTY>Kalispell</CTY>
+      <STA>MT</STA>
+      <CNT />
+    </INVT>
+  </INVTS>
+  <ASSGS>
+    <ASSG>
+      <NAM>Semitool, Inc.</NAM>
+      <CTY>Kalispell</CTY>
+      <STA>MT</STA>
+      <CNT />
+    </ASSG>
+  </ASSGS>
+  <CLASIPC>
+    <IPC>
+      <IPC>C25D00502</IPC>
+    </IPC>
+    <IPC>
+      <IPC>C25D01706</IPC>
+    </IPC>
+    <IPC>
+      <IPC>C25D00712</IPC>
+    </IPC>
+  </CLASIPC>
+  <CLASUPC>
+    <UPC>
+      <UPC>205123000</UPC>
+    </UPC>
+    <UPC>
+      <UPC>205143000</UPC>
+    </UPC>
+    <UPC>
+      <UPC>205291000</UPC>
+    </UPC>
+  </CLASUPC>
+  <CLASFOS>
+    <FOS>
+      <FSC>205</FSC>
+      <FSS>123;143;157;291</FSS>
+    </FOS>
+    <FOS>
+      <FSC>204</FSC>
+      <FSS>224 R;285;287;297 R;297 W</FSS>
+    </FOS>
+  </CLASFOS>
+  <UREFS>
+    <UREF>
+      <PNO>4192729</PNO>
+      <ISD>19800300</ISD>
+      <NAM>Cancelleri et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5024746</PNO>
+      <ISD>19910600</ISD>
+      <NAM>Stierman et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5078852</PNO>
+      <ISD>19920100</ISD>
+      <NAM>Yee et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5167792</PNO>
+      <ISD>19921200</ISD>
+      <NAM>Kamitakahara et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5168886</PNO>
+      <ISD>19921200</ISD>
+      <NAM>Thompson et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5168887</PNO>
+      <ISD>19921200</ISD>
+      <NAM>Thompson et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5228967</PNO>
+      <ISD>19930700</ISD>
+      <NAM>Crites et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5232511</PNO>
+      <ISD>19930800</ISD>
+      <NAM>Bergman</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5235995</PNO>
+      <ISD>19930800</ISD>
+      <NAM>Bergman et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5238500</PNO>
+      <ISD>19930800</ISD>
+      <NAM>Bergman</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5258047</PNO>
+      <ISD>19931100</ISD>
+      <NAM>Tokisue et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5332445</PNO>
+      <ISD>19940700</ISD>
+      <NAM>Bergman</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5342495</PNO>
+      <ISD>19940800</ISD>
+      <NAM>Tung et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5405518</PNO>
+      <ISD>19950400</ISD>
+      <NAM>Hsieh et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5431421</PNO>
+      <ISD>19950700</ISD>
+      <NAM>Thompson et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5445172</PNO>
+      <ISD>19950800</ISD>
+      <NAM>Thompson et al.</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5447615</PNO>
+      <ISD>19950900</ISD>
+      <NAM>Ishida</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5500081</PNO>
+      <ISD>19960300</ISD>
+      <NAM>Bergman</NAM>
+    </UREF>
+    <UREF>
+      <PNO>5522975</PNO>
+      <ISD>19960600</ISD>
+      <NAM>Andricacos et al.</NAM>
+    </UREF>
+  </UREFS>
+  <FREFS>
+    <FREF>
+      <PNO>WO 95/06326</PNO>
+      <ISD>19950300</ISD>
+      <CNT>WOX</CNT>
+    </FREF>
+  </FREFS>
+  <LREPS>
+    <LREP>
+      <FRM>Rockey, Milnamow &amp; Katz, Ltd.</FRM>
+    </LREP>
+  </LREPS>
+  <LREP>
+    <FRM>Rockey, Milnamow &amp; Katz, Ltd.</FRM>
+  </LREP>
+  <ABST>
+    <PAL>Methods used in semiconductor electroplating systems, such as for plating copper, onto a semiconductor wafer or other semiconductor workpiece. The methods apply to patterned metal layers plated onto a seed layer which is partially protected by an overlying photoresist or other coating. The methods employ an electrode assembly which has a boot which seals about a contact face of the electrode. The sealing is performed by engaging the seal against photoresist to prevent corrosion of the seal layer. The area enclosed by the sealing includes a via which is surrounded by the seal. The electrode contact extends through the via to provide electrical contact with the metallic seed layer. Plating of copper or other metal proceeds at exposed seed layer areas.</PAL>
+  </ABST>
+</PatentInfo>

@@ -52,7 +52,10 @@ public partial class _Default : System.Web.UI.Page
 
         string fileName = "USPTO-text.txt";
         string htmlString = File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), fileName));
-
+        Regex rulepattern = null;
+        MatchCollection matches = null;
+        //接成功 match 後的 Groups 值
+        string result = null;
         //使用 XDocument ---str---
         XDocument xDoc;
         var basePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -61,14 +64,13 @@ public partial class _Default : System.Web.UI.Page
 
         //取得 PN ---str---
         //string patternPN = @"<TITLE>.*?</TITLE>";
-        string patternPN = @"<BODY.*?>.*?United States Patent.*?</B>([\d\,]+)</b>.*?Abstract";
+        string pattern = @"<BODY.*?>.*?United States Patent.*?</B>([\d\,]+)</b>.*?Abstract";
 
-
-        Regex rulepattern = new Regex(patternPN, RegexOptions.Singleline);
-        MatchCollection matches = rulepattern.Matches(htmlString);
+        rulepattern = new Regex(pattern, RegexOptions.Singleline);
+        matches = rulepattern.Matches(htmlString);
         //Match matchRules = rulepattern.Match(htmlString);
-        string result = null;
 
+        result = null;
         foreach (Match match in matches)
         {
             //string rule = Regex.Replace(match.ToString(), @"\,", String.Empty);
@@ -82,16 +84,81 @@ public partial class _Default : System.Web.UI.Page
             //pas_text.Text = match.Groups[1].Value;
 
         }
-        
-
-        //pas_text.Text = result;
         var node = xDoc.Root.Element("PN");
         node.SetValue(result);
         //取得 PN ---end---
 
         //取得 APN ---str---
+        pattern = @"Abstract.*?Appl.\sNo.:.*?<b>(.*?\/([\d\,]+))</b>.*?U.S. Patent Documents";
+        rulepattern = new Regex(pattern, RegexOptions.Singleline);
+        matches = rulepattern.Matches(htmlString);
+
+        result = null;
+        foreach (Match match in matches)
+        {
+
+            //去掉逗號
+            string rule = Regex.Replace(match.Groups[2].Value.ToString(), @"\,", String.Empty);
+
+            result = rule;
+
+            //pas_text.Text = match.Groups[1].Value;
+
+        }
+        node = xDoc.Root.Element("APN");
+        node.SetValue(result);
 
         //取得 APN ---end---
+
+        //取得 APD ---str---
+        pattern = @"Abstract.*?Filed:.*?<b>(([a-zA-Z]+)\s([\d]+)\,\s([\d]+))</b>.*?U.S. Patent Documents";
+        /*
+         * Group 1 => 完整年月日，ex.September 30, 1997
+         * Group 2 => 月，ex.September
+         * Group 3 => 日，ex.30
+         * Group 4 => 年，ex.1997
+         */
+        rulepattern = new Regex(pattern, RegexOptions.Singleline);
+        matches = rulepattern.Matches(htmlString);
+
+        result = null;
+        foreach (Match match in matches)
+        {
+
+            string rule = match.Groups[4].Value.ToString() + "/";
+
+            //月份對照表
+            var xmlEntityReplacements = new Dictionary<string, string>
+            {
+                { "January"  , "01" },
+                { "February" , "02" },
+                { "March"    , "03" },
+                { "April"    , "04" },
+                { "May"      , "05" },
+                { "June"     , "06" },
+                { "July"     , "07" },
+                { "August"   , "08" },
+                { "September", "09" },
+                { "October"  , "10" },
+                { "November" , "11" },
+                { "December" , "12" }
+            };
+
+            //換數字月份
+            rule += Regex.Replace(match.Groups[2].Value.ToString(), string.Join("|", xmlEntityReplacements.Keys
+            .Select(k => k.ToString()).ToArray()), m => xmlEntityReplacements[m.Value]);
+
+            rule += "/" + match.Groups[3].Value.ToString();
+
+            result = rule;
+
+        }
+        node = xDoc.Root.Element("APD");
+        node.SetValue(result);
+
+        //取得 APD ---end---
+
+
 
         //存檔 ---str---
         xDoc.Save(basePath + "res/06001234-test.xml");
