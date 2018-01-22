@@ -13,7 +13,11 @@ using System.Xml.Linq;
 
 public partial class _Default : System.Web.UI.Page
 {
-    static string basePath = AppDomain.CurrentDomain.BaseDirectory;
+    //專案目錄的路徑
+    static string basePath     = AppDomain.CurrentDomain.BaseDirectory;
+    //html檔名
+    static string htmlFileName = "USPTO-html.html";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         dl_btn.Click += new EventHandler(this.dl_btn_Click);
@@ -27,20 +31,15 @@ public partial class _Default : System.Web.UI.Page
         clickedButton.Enabled = false;
 
         string url = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=1&f=G&l=50&s1=6001234.PN.&OS=PN/6001234&RS=PN/6001234";
-        string htmlFileName = "USPTO-html.html";
-        string txtFileName = "USPTO-text.txt";
 
         WebClient client = new WebClient();
         Byte[] htmlData = client.DownloadData(url);
         string html = Encoding.UTF8.GetString(htmlData);
         
         //下載到 專案/res 目錄下，而目前此專案名稱為"WebSite-v1"
-        StreamWriter html_sw = new StreamWriter(basePath + "/res/" +  htmlFileName);
-        StreamWriter txt_sw = new StreamWriter(basePath + "/res/" + txtFileName);
+        StreamWriter html_sw = new StreamWriter(basePath + "res/" +  htmlFileName);
         html_sw.Write(html);
         html_sw.Close();
-        txt_sw.Write(html);
-        txt_sw.Close();
 
         //顯示下載完成
         dl_lab.Text = "Download OK...";
@@ -52,8 +51,7 @@ public partial class _Default : System.Web.UI.Page
         clickedButton.Text = "...button clicked...";
         clickedButton.Enabled = false;
 
-        string fileName = "USPTO-text.txt";
-        string htmlString = File.ReadAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), fileName));
+        string htmlString = File.ReadAllText(basePath + "res/" + htmlFileName);
         Regex rulepattern = null;
         MatchCollection matches = null;
         //接成功 match 後的 Groups 值
