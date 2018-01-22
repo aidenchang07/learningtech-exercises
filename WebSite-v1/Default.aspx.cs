@@ -13,6 +13,7 @@ using System.Xml.Linq;
 
 public partial class _Default : System.Web.UI.Page
 {
+    static string basePath = AppDomain.CurrentDomain.BaseDirectory;
     protected void Page_Load(object sender, EventArgs e)
     {
         dl_btn.Click += new EventHandler(this.dl_btn_Click);
@@ -58,7 +59,7 @@ public partial class _Default : System.Web.UI.Page
         string result = null;
         //使用 XDocument ---str---
         XDocument xDoc;
-        var basePath = AppDomain.CurrentDomain.BaseDirectory;
+
         xDoc = XDocument.Load(basePath + "res/06001234.xml");
         //使用 XDocument ---end---
 
