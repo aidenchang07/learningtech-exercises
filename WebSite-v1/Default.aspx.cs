@@ -33,9 +33,10 @@ public partial class _Default : System.Web.UI.Page
         WebClient client = new WebClient();
         Byte[] htmlData = client.DownloadData(url);
         string html = Encoding.UTF8.GetString(htmlData);
-        //下載到 "文件" 資料夾
-        StreamWriter html_sw = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), htmlFileName));
-        StreamWriter txt_sw = new StreamWriter(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), txtFileName));
+        
+        //下載到 專案/res 目錄下，而目前此專案名稱為"WebSite-v1"
+        StreamWriter html_sw = new StreamWriter(basePath + "/res/" +  htmlFileName);
+        StreamWriter txt_sw = new StreamWriter(basePath + "/res/" + txtFileName);
         html_sw.Write(html);
         html_sw.Close();
         txt_sw.Write(html);
