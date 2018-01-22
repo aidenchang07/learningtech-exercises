@@ -14,10 +14,16 @@ using System.Xml.Linq;
 public partial class _Default : System.Web.UI.Page
 {
     //專案目錄的路徑
-    static string basePath     = AppDomain.CurrentDomain.BaseDirectory;
+    static string basePath = AppDomain.CurrentDomain.BaseDirectory + @"res\";
     
     //html檔名
     static string htmlFileName = "USPTO-html.html";
+
+    //XML參考檔名
+    static string xmlReferenceName = "06001234.xml";
+
+    //XML存檔名稱
+    static string xmlSaveName = "06001234-new.xml";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -38,7 +44,7 @@ public partial class _Default : System.Web.UI.Page
         string html = Encoding.UTF8.GetString(htmlData);
         
         //下載到 專案/res 目錄下，而目前此專案名稱為"WebSite-v1"
-        StreamWriter html_sw = new StreamWriter(basePath + "res/" +  htmlFileName);
+        StreamWriter html_sw = new StreamWriter(basePath + htmlFileName);
         html_sw.Write(html);
         html_sw.Close();
 
@@ -53,7 +59,7 @@ public partial class _Default : System.Web.UI.Page
         clickedButton.Enabled = false;
 
         //讀取html檔
-        string htmlString = File.ReadAllText(basePath + "res/" + htmlFileName);
+        string htmlString = File.ReadAllText(basePath + htmlFileName);
         Regex rulePattern = null;
         
         //接成功 match 後的 Groups 值
@@ -61,7 +67,7 @@ public partial class _Default : System.Web.UI.Page
         
         //使用 XDocument ---str---
         XDocument xDoc;
-        xDoc = XDocument.Load(basePath + "res/06001234.xml");
+        xDoc = XDocument.Load(basePath + xmlReferenceName);
         //使用 XDocument ---end---
 
         //取得 PN ---str---
@@ -93,7 +99,8 @@ public partial class _Default : System.Web.UI.Page
         }
         node = xDoc.Root.Element("APN");
         node.SetValue(matchResult);
-
+        //設完值把值清空
+        matchResult = null;
         //取得 APN ---end---
 
         //取得 APD ---str---
@@ -139,13 +146,12 @@ public partial class _Default : System.Web.UI.Page
         }
         node = xDoc.Root.Element("APD");
         node.SetValue(matchResult);
-
+        //設完值把值清空
+        matchResult = null;
         //取得 APD ---end---
 
-
-        //存檔 ---str---
-        xDoc.Save(basePath + "res/06001234-test.xml");
-        //存檔 ---end---
+        //存檔為XML檔
+        xDoc.Save(basePath + xmlSaveName);
 
     }
 }
