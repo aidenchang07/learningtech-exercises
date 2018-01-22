@@ -21,10 +21,6 @@
         <br />
         <asp:Button ID="pas_btn"
                     Text="Click Here" runat="server"/>
-        <br />
-        <br />
-        <asp:Label ID="pas_text" Text="Nothing." runat="server"/>
-    <!--顯示圖片<img src="images/snowflake-2910087_640.png" />-->
     </form>
     </body>
 </html>
