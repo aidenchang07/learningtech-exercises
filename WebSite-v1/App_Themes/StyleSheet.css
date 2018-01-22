@@ -1,0 +1,10 @@
+﻿body {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+input {
+    border: solid 1px black;
+    font-family: verdana;
+    font-size: 16px;
+}

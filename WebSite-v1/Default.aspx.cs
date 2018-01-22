@@ -13,9 +13,10 @@ using System.Xml.Linq;
 
 public partial class _Default : System.Web.UI.Page
 {
-    //專案目錄的路徑
-    static string basePath = AppDomain.CurrentDomain.BaseDirectory + @"res\";
-    
+    //路徑
+    static string appdataPath = Path.Combine(HttpContext.Current.Request.PhysicalApplicationPath, @"App_Data\");
+    static string contentPath = Path.Combine(HttpContext.Current.Request.PhysicalApplicationPath, @"Content\");
+
     //html檔名
     static string htmlFileName = "USPTO-html.html";
 
@@ -43,13 +44,13 @@ public partial class _Default : System.Web.UI.Page
         Byte[] htmlData = client.DownloadData(url);
         string html = Encoding.UTF8.GetString(htmlData);
         
-        //下載到 專案/res 目錄下，而目前此專案名稱為"WebSite-v1"
-        StreamWriter html_sw = new StreamWriter(basePath + htmlFileName);
+        //下載到 專案/Content 目錄下，而目前此專案名稱為"WebSite-v1"
+        StreamWriter html_sw = new StreamWriter(contentPath + htmlFileName);
         html_sw.Write(html);
         html_sw.Close();
 
-        //顯示下載完成
-        dl_lab.Text = "Download OK...";
+        //按鍵回復為有效狀態
+        clickedButton.Enabled = true;
     }
 
     void pas_btn_Click(Object sender,EventArgs e)
@@ -59,7 +60,7 @@ public partial class _Default : System.Web.UI.Page
         clickedButton.Enabled = false;
 
         //讀取html檔
-        string htmlString = File.ReadAllText(basePath + htmlFileName);
+        string htmlString = File.ReadAllText(contentPath + htmlFileName);
         Regex rulePattern = null;
         
         //接成功 match 後的 Groups 值
@@ -67,7 +68,7 @@ public partial class _Default : System.Web.UI.Page
         
         //使用 XDocument ---str---
         XDocument xDoc;
-        xDoc = XDocument.Load(basePath + xmlReferenceName);
+        xDoc = XDocument.Load(appdataPath + xmlReferenceName);
         //使用 XDocument ---end---
 
         //取得 PN ---str---
@@ -151,7 +152,10 @@ public partial class _Default : System.Web.UI.Page
         //取得 APD ---end---
 
         //存檔為XML檔
-        xDoc.Save(basePath + xmlSaveName);
+        xDoc.Save(contentPath + xmlSaveName);
+
+        //按鍵回復為有效狀態
+        clickedButton.Enabled = true;
 
     }
 }
